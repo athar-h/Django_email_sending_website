@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    
+    {% block stylepage %}
+        <link rel="stylesheet" href ="{% static '/base.css/' %}">
+    {% endblock stylepage %}
+
+    <meta charset="UTF-8">
+    <title>
+    {% block title %}
+      Home
+    {% endblock title %}
+    </title>
+
+</head>
+<body>
+{% block body %}
+
+
+<h1> WELCOME {{username}}</h1>
+
+
+<button type="submit" id="bt-btn" class="" >Subscribe </button>
+
+<a href="/logout/"><button class="lout" >logout</button></a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+
+<script>
+        var subs = false;
+        var loadBtn = document.getElementById("bt-btn");
+        
+        loadBtn.addEventListener("click",()=>{
+        var loadBtn = document.getElementById("bt-btn")
+
+        // loadBtn.classList.toggle("pressed")
+
+        
+        if (!subs)
+        {
+        subs=true
+        loadBtn.innerText = "Subscribed";
+        loadBtn.classList.add("pressed")
+        console.log("subscribed");
+        }
+        else
+        {
+        subs = false
+        loadBtn.innerText = "Subscribe";
+        loadBtn.classList.remove("pressed")
+        console.log("unsubscribed");
+        }
+
+        console.log(subs);
+        alert("button pressed ");
+      
+
+        let data = new FormData();
+        
+        data.append("subs", subs)
+        data.append("csrfmiddlewaretoken", '{{csrf_token}}')
+
+        axios.post("/api-view/",data).then(function(resp){
+        if(resp.data.status==="success"){
+        console.log(resp.data);
+        alert("posted successfully")}}).catch(function(err){
+        console.log(err)})
+        })
+        
+</script>
+
+{% endblock body %}
+
+</body>
+</html>

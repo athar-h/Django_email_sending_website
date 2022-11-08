@@ -1,0 +1,24 @@
+{% extends "base.html/" %}
+
+{% block stylepage %}
+{% load static %}
+<link rel = "stylesheet" href="{% static '/login.css/' %}">
+{% endblock stylepage %}
+
+{% block title %} Login Page {% endblock title %}
+
+{% block body %}
+<form method ="post">
+    <legend>Login Form</legend>
+    <br>
+{% csrf_token %}
+<label for="username">Username:</label>
+<input  id ="username" type =text name="username" autofocus="on">
+    <br>
+<label for="passwd">Password:</label>
+<input id = "passwd" type ="password" name="password">
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock body %}

@@ -1,0 +1,36 @@
+{% extends "base.html/" %}
+
+{% block title %}
+Register Page
+{% endblock title %}
+
+{% block body %}
+<h1 style="color:red" > Register Here </h1>
+
+<form method ="post">
+    <legend>Register Yourself</legend>
+    <br>
+{% csrf_token %}
+
+    <label for="email">Email :</label>
+<input style="display:flex;" id ="email" type ="email" name="email" autofocus="on"
+required >
+    <br>
+
+<label for="username">Username:</label>
+<input style="display:flex;" id ="username" type =text name="username" required autofocus="on">
+    <br>
+    {% if not "{{data}}" %}
+        <h6>"{{data}}"</h6>
+    {% endif %}
+
+<label for="passwd">Password:</label>
+<input style="display:flex;" id = "passwd" type ="password" name="password" required >
+    </br>
+    <br>
+    
+    <button type="submit">Register</button>
+
+</form>
+
+{% endblock body %}

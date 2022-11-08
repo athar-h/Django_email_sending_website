@@ -1,0 +1,40 @@
+button{
+background-color:red;
+border-radius : 10px;
+border-color :grey;
+width:200px;
+color:white;
+}
+h1{
+color:rgba(0, 0, 0,1);
+font-style:italic;
+font-family: 'Courier New', Courier, monospace;
+}
+
+button:hover{
+background-color:grey;
+}
+
+button:active{
+background-color:blue;
+}
+.pressed{
+background-color:grey;
+}
+
+.lout{
+    background-color:green;
+}
+
+body{
+    height:700px ;
+    background-color: whitesmoke;
+    /* outline:2px solid black; */
+    background-image: url("/static/images/p_logo.png/");
+    background-size:700px;
+    background-repeat:no-repeat;
+    background-position: center;
+    
+    
+    
+}
